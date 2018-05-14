@@ -8,7 +8,7 @@ interface CombinedState {
     counter: CounterState;
 }
 
-export default combineReducers<CombinedState, CombinedAction>({
+export default combineReducers<CombinedState>({
     todos,
     counter
 });
