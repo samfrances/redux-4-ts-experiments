@@ -1,7 +1,8 @@
 import { createStore } from 'redux';
-import counter, { CounterAction } from './reducers';
+import reducer from './reducers';
 
-const store = createStore(counter);
+const store = createStore(reducer);
 
 // This should fail typescript compilation:
 store.dispatch({ type: "INVALID_ACTION" });
+store.dispatch({ type: "ADD_TODO" });

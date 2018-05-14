@@ -1,18 +1,14 @@
-const INCREMENT = "INCREMENT";
-const DECREMENT = "DECREMENT";
+import { combineReducers } from "redux";
+import todos, { TodoAction, TodoState } from "./todos";
+import counter, { CounterAction, CounterState } from "./counter";
 
-type Increment = {type: typeof INCREMENT}
-type Decrement = {type: typeof DECREMENT}
-
-export type CounterAction = Increment | Decrement;
-
-export default (state = 0, action: CounterAction) => {
-  switch (action.type) {
-    case INCREMENT:
-      return state + 1
-    case DECREMENT:
-      return state - 1
-    default:
-      return state
-  }
+type CombinedAction = TodoAction | CounterAction;
+interface CombinedState {
+    todos: TodoState;
+    counter: CounterState;
 }
+
+export default combineReducers<CombinedState, CombinedAction>({
+    todos,
+    counter
+});
